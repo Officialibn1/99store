@@ -1,0 +1,41 @@
+.section_header {
+	// border: 1px solid #000;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	div {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+
+		span {
+			font-size: 3rem;
+			color: #d42a4c;
+		}
+
+		h1 {
+			font-size: 1.5rem;
+		}
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		gap: 0.1rem;
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		span {
+			font-size: 1.2rem;
+			font-weight: 600;
+			font-style: italic;
+		}
+
+		svg {
+			font-size: 1.2rem;
+		}
+	}
+}

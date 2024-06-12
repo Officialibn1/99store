@@ -1,0 +1,100 @@
+/* THEME #e63f66 */
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+	// background-color: rgb(255, 255, 255) !important;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+	color: #470a1a;
+}
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
+.raleway-medium {
+	font-family: "Raleway", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.raleway-bold {
+	font-family: "Raleway", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-style: normal;
+}
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
+.montserrat-light {
+	font-family: "Montserrat", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 100;
+	font-style: normal;
+}
+
+:root {
+	font-family: "Raleway", sans-serif;
+	line-height: 1.5;
+
+	color-scheme: light dark;
+	color: #48091a;
+	background-color: #ffffff;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+button {
+	border: none;
+	background-color: transparent;
+	outline: none;
+	color: #48091a;
+}
+
+button:focus {
+	outline: none;
+}
+
+.debug_border {
+	border: 2px solid #000;
+}
+
+.debug_border_2 {
+	border: 2px solid slategray;
+}
+
+.slategray {
+	border: 2px solid rebeccapurple;
+}
+
+.debug_border_3 {
+	border: 2px solid salmon;
+}
+
+/* 
+@media (prefers-color-scheme: light) {
+	:root {
+		color: #213547;
+		background-color: #ffffff;
+	}
+} */

@@ -1,0 +1,17 @@
+.section_container {
+	padding: 1rem 0.5rem;
+	margin: 2rem auto;
+}
+
+@media (min-width: 768px) {
+	.section_container {
+		padding: 1rem 2.5rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.section_container {
+		max-width: 1224px;
+		margin: 3rem auto;
+	}
+}

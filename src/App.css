@@ -1,0 +1,9 @@
+.layout {
+	max-width: 1440px;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+/* filter: drop-shadow(0 0 2em #646cffaa); */
+/* will-change: filter; */
+/* transition: filter 300ms; */
