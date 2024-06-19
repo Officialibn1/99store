@@ -2,7 +2,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import React from "react";
 import "./EmptyPage.scss";
 
-const EmptyPage = () => {
+const EmptyPage = ({ text }: { text?: string }) => {
 	return (
 		<div className='empty_page_wrapper'>
 			<div>
@@ -12,7 +12,11 @@ const EmptyPage = () => {
 					src='/EmptyPage.json'
 				/>
 			</div>
-			<h1>Sorry, there is no product that match your search/filters!!</h1>
+			<h1>
+				{text
+					? text
+					: "Sorry, there is no product that match your search/filters!!"}
+			</h1>
 		</div>
 	);
 };

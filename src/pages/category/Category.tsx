@@ -14,6 +14,9 @@ import {
 import ProductCard from "../../components/product-card/ProductCard";
 import { CategoriesFilter, CategoriesFilterResponse } from "./typings";
 import { BiCheck } from "react-icons/bi";
+import LoadingCard from "../../components/ui/loading-card/LoadingCard";
+import ErrorPage from "../../components/ui/error-page/ErrorPage";
+import EmptyPage from "../../components/ui/empty-page/EmptyPage";
 
 const Category = () => {
 	const [products, setProducts] = useState<Product[]>();
@@ -76,6 +79,8 @@ const Category = () => {
 		// }
 
 		const fetchProducts = async () => {
+			await new Promise((resolve) => setTimeout(resolve, 3000));
+
 			try {
 				/* prettier-ignore */
 				const res = await axios.get(
@@ -95,7 +100,9 @@ const Category = () => {
 
 				/* prettier-ignore */
 
-				console.log(`${subCategoriesFilterParam?.map((filter, index) => `&filters[sub_categories][url][${index}]=${filter}`)}`);
+				// console.log(`${subCategoriesFilterParam?.map((filter, index) => `&filters[sub_categories][url][${index}]=${filter}`)}`);
+
+				// throw new Error("Error");
 
 				if (res.status === 200) {
 					const data: ProductResponse = await res.data;
@@ -158,7 +165,7 @@ const Category = () => {
 									),
 								)
 							) : (
-								<span>Fetching Sub Categories</span>
+								<span>. . . .</span>
 							)}
 
 							{categoriesFilter && fetchCategoriesError ? (
@@ -282,11 +289,13 @@ const Category = () => {
 					</div>
 					<div className='grid_container category_page_products'>
 						{isLoading ? (
-							<h1>Fethcing data.. . </h1>
+							[1, 2, 3, 4, 5, 6].map((_, i) => <LoadingCard key={i} />)
 						) : !isLoading && apiError ? (
-							<h1>Error fethcing data.. . </h1>
+							<ErrorPage />
 						) : !isLoading && !apiError && products && !products.length ? (
-							<h1>The are no products for this filter. . .</h1>
+							<EmptyPage
+								text={`Sorry, there is no product in the ${param.id} category!`}
+							/>
 						) : (
 							products?.map((product) => (
 								<ProductCard

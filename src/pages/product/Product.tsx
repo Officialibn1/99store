@@ -190,7 +190,7 @@ const Product = () => {
 											quantity: productQuantity,
 										})
 									}>
-									<span>Buy Now</span>
+									<span>Add to Cart</span>
 									<HiOutlineShoppingCart />
 								</button>
 							</div>
