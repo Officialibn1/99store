@@ -15,6 +15,9 @@ import {
 	CategoryAndSubCategoryData,
 	CategoryAndSubCategoriesResponse,
 } from "./typings";
+import EmptyPage from "../../components/ui/empty-page/EmptyPage";
+import ErrorPage from "../../components/ui/error-page/ErrorPage";
+import LoadingCard from "../../components/ui/loading-card/LoadingCard";
 
 const Products = () => {
 	const [products, setProducts] = useState<Product[]>();
@@ -114,6 +117,8 @@ const Products = () => {
 
 		const fetchProducts = async () => {
 			try {
+				// await new Promise((resolve) => setTimeout(resolve, 3000));
+
 				/* prettier-ignore */
 				const res = await axios.get(
 					`${
@@ -128,9 +133,12 @@ const Products = () => {
 					},
 				);
 
-				/* prettier-ignore */
+				// throw new Error("Oopss");
 
-				console.log(`${categoriesFilterParam?.map((filter, index) => `&filters[categories][url][${index}]=${filter}`).join('')}`);
+				/* prettier-ignore */
+				// console.log(
+				// 	`${categoriesFilterParam
+				// 		?.map((filter, index) => `&filters[categories][url][${index}]=${filter}`).join("")}`);
 
 				if (res.status === 200) {
 					const data: ProductResponse = await res.data;
@@ -370,11 +378,11 @@ const Products = () => {
 					</div>
 					<div className='grid_container category_page_products'>
 						{isLoading ? (
-							<h1>Fethcing data.. . </h1>
+							[1, 2, 3, 4, 5, 6].map((_, i) => <LoadingCard key={i} />)
 						) : !isLoading && apiError ? (
-							<h1>Error fethcing data.. . </h1>
+							<ErrorPage />
 						) : !isLoading && !apiError && products && !products.length ? (
-							<h1>The are no products for this filter. . .</h1>
+							<EmptyPage />
 						) : (
 							products?.map((product) => (
 								<ProductCard

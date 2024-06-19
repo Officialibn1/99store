@@ -1,0 +1,58 @@
+.skeleton {
+	opacity: 0.45;
+	animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.loading_card_container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: #ffffff;
+	border-radius: 0.5rem;
+	border: 1px solid #fbd0d4;
+	overflow: hidden;
+	height: fit-content;
+	gap: 1rem;
+	padding: 0.5rem;
+
+	.image_loading_skeleton {
+		width: 100%;
+		aspect-ratio: 1/1;
+		border-radius: 0.5rem;
+	}
+
+	.skeleton_text {
+		width: 4.5rem;
+		height: 1.4rem;
+		border-radius: 0.2rem;
+	}
+
+	.loading_gap {
+		width: 100%;
+		display: flex;
+		gap: 1rem;
+	}
+
+	.button_skeleton {
+		height: 3rem;
+		width: 9rem;
+		border-radius: 0.3rem;
+		margin-left: auto;
+	}
+
+	.favourite_skeleton {
+		height: 3rem;
+		aspect-ratio: 1/1;
+		border-radius: 0.2rem;
+	}
+}
+
+@keyframes skeleton-loading {
+	0% {
+		background-color: hsl(200, 20%, 70%);
+	}
+
+	100% {
+		background-color: hsl(200, 20%, 95%);
+	}
+}
