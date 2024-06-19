@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Cart.scss";
 import { useAppDispatch, useAppSelector } from "../../redux/redux-hooks";
 import { FaOpencart } from "react-icons/fa6";
@@ -25,10 +25,14 @@ const Cart = () => {
 
 	const dispath = useAppDispatch();
 
+	const [checkoutLoading, setCheckoutLoading] = useState(false);
+
 	const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 	const proceedCheckout = async () => {
-		console.log("Iytems", items);
+		// console.log("Iytems", items);
+
+		setCheckoutLoading(true);
 
 		try {
 			const stripe = await stripePromise;
@@ -55,6 +59,8 @@ const Cart = () => {
 		} catch (error) {
 			console.log(error);
 		}
+
+		setCheckoutLoading(false);
 	};
 
 	return (
@@ -136,9 +142,19 @@ const Cart = () => {
 							</div>
 
 							<div className='checkout'>
-								<button onClick={proceedCheckout}>Checkout</button>
+								<button
+									disabled={items.length < 1 || checkoutLoading}
+									onClick={proceedCheckout}
+									aria-disabled={items.length < 1 || checkoutLoading}>
+									Checkout
+								</button>
 
-								<button onClick={() => dispath(resetCart())}>Clear Cart</button>
+								<button
+									disabled={items.length < 1 || checkoutLoading}
+									onClick={() => dispath(resetCart())}
+									aria-disabled={items.length < 1 || checkoutLoading}>
+									Clear Cart
+								</button>
 							</div>
 						</div>
 					</div>
