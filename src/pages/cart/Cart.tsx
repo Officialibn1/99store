@@ -18,6 +18,7 @@ import { loadStripe } from "@stripe/stripe-js";
 // const stripe = new Stripe(process.env.STRIPE_API_SECRET_KEY)
 
 import axios from "axios";
+import EmptyCart from "../../components/ui/empty-cart/EmptyCart";
 
 const Cart = () => {
 	const items = useAppSelector((state) => state?.products);
@@ -70,49 +71,53 @@ const Cart = () => {
 
 					<div className='cart_main_wrapper'>
 						<div className='cart_items_list'>
-							{items?.map((product) => (
-								<div
-									className='cart_item'
-									key={product.name}>
-									<div className='item_image'>
-										<img
-											src={`${import.meta.env.VITE_STRAPI_SERVER_IMAGE_URL}${
-												product.imageUrl
-											}`}
-											alt={product.name}
-										/>
-									</div>
+							{items.length > 0 ? (
+								items.map((product) => (
+									<div
+										className='cart_item'
+										key={product.name}>
+										<div className='item_image'>
+											<img
+												src={`${import.meta.env.VITE_STRAPI_SERVER_IMAGE_URL}${
+													product.imageUrl
+												}`}
+												alt={product.name}
+											/>
+										</div>
 
-									<div className='item_details'>
-										<h1>{product.name}</h1>
+										<div className='item_details'>
+											<h1>{product.name}</h1>
 
-										<p>${product.price.toFixed(2)}</p>
+											<p>${product.price.toFixed(2)}</p>
 
-										<div className='buttons'>
-											<div className='quantity'>
+											<div className='buttons'>
+												<div className='quantity'>
+													<button
+														onClick={() =>
+															dispath(decrementItemQuantity(product.id))
+														}>
+														<TiMinusOutline />
+													</button>
+													<span>{product.quantity}</span>
+													<button
+														onClick={() =>
+															dispath(incrementItemQuantity(product.id))
+														}>
+														<TiPlusOutline />
+													</button>
+												</div>
+
 												<button
-													onClick={() =>
-														dispath(decrementItemQuantity(product.id))
-													}>
-													<TiMinusOutline />
-												</button>
-												<span>{product.quantity}</span>
-												<button
-													onClick={() =>
-														dispath(incrementItemQuantity(product.id))
-													}>
-													<TiPlusOutline />
+													onClick={() => dispath(removeFromCart(product.id))}>
+													Remove
 												</button>
 											</div>
-
-											<button
-												onClick={() => dispath(removeFromCart(product.id))}>
-												Remove
-											</button>
 										</div>
 									</div>
-								</div>
-							))}
+								))
+							) : (
+								<EmptyCart />
+							)}
 						</div>
 
 						<div className='cart_checkout_details'>
