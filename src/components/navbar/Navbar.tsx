@@ -8,7 +8,7 @@ import {
 	FaTwitter,
 } from "react-icons/fa6";
 import { RiMenu4Line } from "react-icons/ri";
-import { CiSearch, CiUser } from "react-icons/ci";
+import { CiSearch, CiHeart } from "react-icons/ci";
 import { GiConverseShoe, GiShoppingCart } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { IoIosFemale, IoIosMale, IoMdClose } from "react-icons/io";
@@ -22,7 +22,11 @@ const Navbar = () => {
 
 	const [showCategories, setShowCategories] = useState(false);
 
-	const items = useAppSelector((state) => state?.products.length);
+	const items = useAppSelector((state) => state?.cart?.products?.length);
+
+	const favouriteItems = useAppSelector(
+		(state) => state?.favourite?.products?.length,
+	);
 
 	const search = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -110,8 +114,9 @@ const Navbar = () => {
 				</form>
 
 				<div className='profile_cart'>
-					<button className='profile'>
-						<CiUser />
+					<button className='shopping_cart'>
+						<CiHeart />
+						<span>{favouriteItems}</span>
 					</button>
 
 					<Link to={"/cart"}>

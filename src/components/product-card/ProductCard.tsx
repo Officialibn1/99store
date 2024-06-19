@@ -2,10 +2,11 @@ import React from "react";
 import { Product } from "../section-deals/typings";
 import { Link } from "react-router-dom";
 import "./ProductCard.scss";
-import { IoMdHeartEmpty } from "react-icons/io";
+import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
-import { useAppDispatch } from "../../redux/redux-hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/redux-hooks";
 import { addToCart } from "../../redux/cart-reducer";
+import { addOrRemoveItem } from "../../redux/favourite-reducer";
 
 function toFixed(num: number) {
 	return num.toFixed(2);
@@ -13,6 +14,10 @@ function toFixed(num: number) {
 
 const ProductCard = ({ attributes, id }: Product) => {
 	const dispatch = useAppDispatch();
+
+	const favouriteItems = useAppSelector((state) => state?.favourite?.products);
+
+	const isFavourite = favouriteItems.find((item) => item.id === id);
 
 	return (
 		<div className='product_card'>
@@ -36,8 +41,19 @@ const ProductCard = ({ attributes, id }: Product) => {
 				</div>
 
 				<div className='product_card_buttons'>
-					<button>
-						<IoMdHeartEmpty />
+					<button
+						onClick={() =>
+							dispatch(
+								addOrRemoveItem({
+									id,
+									name: attributes.name,
+									imageUrl: attributes.images.data[0].attributes.url,
+									price: attributes.price,
+									description: attributes.description,
+								}),
+							)
+						}>
+						{isFavourite ? <IoMdHeart /> : <IoMdHeartEmpty />}
 					</button>
 
 					<button

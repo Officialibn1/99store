@@ -21,7 +21,7 @@ import axios from "axios";
 import EmptyCart from "../../components/ui/empty-cart/EmptyCart";
 
 const Cart = () => {
-	const items = useAppSelector((state) => state?.products);
+	const items = useAppSelector((state) => state?.cart?.products);
 
 	const dispath = useAppDispatch();
 
