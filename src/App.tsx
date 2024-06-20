@@ -10,6 +10,7 @@ import About from "./pages/about/About";
 import Categories from "./pages/categories/Categories";
 import Category from "./pages/category/Category";
 import Cart from "./pages/cart/Cart";
+import Favourites from "./pages/favourites/Favourites";
 
 const Layout = () => {
 	return (
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
 			{
 				path: "/about",
 				element: <About />,
+			},
+			{
+				path: "/favourites",
+				element: <Favourites />,
 			},
 			{
 				path: "/cart",

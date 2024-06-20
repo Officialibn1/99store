@@ -1,0 +1,40 @@
+.favourite_page_container {
+	// border: 2px solid #000;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	.title {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+
+		> h1 {
+			font-size: 2rem;
+			font-weight: 600;
+		}
+
+		> svg {
+			font-size: 2.2rem;
+		}
+	}
+
+	> span {
+		width: 100%;
+		height: 2px;
+		background-color: #fde6e8;
+		margin: 1.5rem 0 2.5rem;
+	}
+
+	.favourite_products {
+		width: 100%;
+
+		// border: 2px solid #000;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.favourite_page_container {
+		margin-top: 5rem;
+	}
+}
