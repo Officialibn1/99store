@@ -50,6 +50,7 @@ const ProductCard = ({ attributes, id }: Product) => {
 									imageUrl: attributes.images.data[0].attributes.url,
 									price: attributes.price,
 									description: attributes.description,
+									slug: attributes.slug,
 								}),
 							)
 						}>

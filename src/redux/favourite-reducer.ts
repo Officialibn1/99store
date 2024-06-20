@@ -7,6 +7,7 @@ export interface FavouriteItem {
 	imageUrl: string;
 	price: number;
 	description: string;
+	slug: string;
 }
 
 const initialFavouriteState: {
@@ -35,6 +36,7 @@ export const favouriteSlice = createSlice({
 					imageUrl: action.payload.imageUrl,
 					price: action.payload.price,
 					description: action.payload.description,
+					slug: action.payload.slug,
 				});
 			}
 		},
