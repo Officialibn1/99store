@@ -28,19 +28,16 @@ const Footer = () => {
 			<div className='middle'>
 				<ul>
 					<li>
-						<h1>Product Sections</h1>
+						<h1>Top Sections</h1>
 					</li>
 					<li>
-						<Link to={"/men"}>Men</Link>
+						<Link to={"/categories/men"}>Men</Link>
 					</li>
 					<li>
-						<Link to={"/women"}>Women</Link>
+						<Link to={"/categories/women"}>Women</Link>
 					</li>
 					<li>
-						<Link to={"/watch"}>Watch</Link>
-					</li>
-					<li>
-						<Link to={"/ear buds"}>EarBuds</Link>
+						<Link to={"/categories/accessories"}>Accessories</Link>
 					</li>
 				</ul>
 
@@ -52,13 +49,13 @@ const Footer = () => {
 						<Link to={"/about"}>About Us</Link>
 					</li>
 					<li>
-						<Link to={"/terms"}>Terms and conditions</Link>
+						<Link to={"/"}>Terms and conditions</Link>
 					</li>
 					<li>
-						<Link to={"/privacy"}>Privacy Policy</Link>
+						<Link to={"/"}>Privacy Policy</Link>
 					</li>
 					<li>
-						<Link to={"/warranty"}>Warranty</Link>
+						<Link to={"/"}>Warranty</Link>
 					</li>
 				</ul>
 			</div>
@@ -73,31 +70,31 @@ const Footer = () => {
 
 				<div>
 					<a
-						href='/'
+						href='https://www.linkedin.com/in/isah-muhammad-5046b125a/'
 						target='_black'>
 						<FaFacebook />
 					</a>
 
 					<a
-						href='/'
+						href='https://www.instagram.com/__ibn1?igsh=MTR0M2NkeTZlMnVjZQ%3D%3D&utm_source=qr'
 						target='_black'>
 						<FaInstagram />
 					</a>
 
 					<a
-						href='/'
+						href='/https://wa.me/message/4K7QPPNRCHWEF1'
 						target='_black'>
 						<FaWhatsapp />
 					</a>
 
 					<a
-						href='/'
+						href='www.tiktok.com/@isahibnmuhammad1'
 						target='_black'>
 						<FaTiktok />
 					</a>
 
 					<a
-						href='/'
+						href='https://x.com/__ibn1'
 						target='_black'>
 						<FaTwitter />
 					</a>

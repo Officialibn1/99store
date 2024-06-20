@@ -79,7 +79,7 @@ const Category = () => {
 		// }
 
 		const fetchProducts = async () => {
-			await new Promise((resolve) => setTimeout(resolve, 3000));
+			// await new Promise((resolve) => setTimeout(resolve, 3000));
 
 			try {
 				/* prettier-ignore */
@@ -117,7 +117,12 @@ const Category = () => {
 		};
 
 		fetchProducts();
-	}, [subCategoriesFilterParam, sortByPriceFilterParam, sortByDateFilterParam]);
+	}, [
+		subCategoriesFilterParam,
+		sortByPriceFilterParam,
+		sortByDateFilterParam,
+		param.id,
+	]);
 
 	const handleSubcategoriesSelect = (
 		e: React.ChangeEvent<HTMLInputElement>,
