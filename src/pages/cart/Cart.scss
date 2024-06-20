@@ -170,6 +170,11 @@
 					font-size: 1.2rem;
 					color: #fff;
 
+					> svg {
+						font-size: 1.3rem;
+						animation: rotate 0.5s infinite linear;
+					}
+
 					&:hover {
 						border-color: #10b981;
 						background-color: transparent;
@@ -205,5 +210,14 @@
 				height: fit-content;
 			}
 		}
+	}
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
 	}
 }

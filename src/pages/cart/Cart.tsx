@@ -19,6 +19,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 import axios from "axios";
 import EmptyCart from "../../components/ui/empty-cart/EmptyCart";
+import { CgSpinner } from "react-icons/cg";
 
 const Cart = () => {
 	const items = useAppSelector((state) => state?.cart?.products);
@@ -146,7 +147,7 @@ const Cart = () => {
 									disabled={items.length < 1 || checkoutLoading}
 									onClick={proceedCheckout}
 									aria-disabled={items.length < 1 || checkoutLoading}>
-									Checkout
+									{!checkoutLoading ? "Checkout" : <CgSpinner />}
 								</button>
 
 								<button
