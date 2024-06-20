@@ -97,7 +97,9 @@ const Navbar = () => {
 				</div>
 
 				<div className='logo'>
-					<FaOpencart />
+					<Link to={"/"}>
+						<FaOpencart />
+					</Link>
 				</div>
 
 				<form
@@ -107,6 +109,7 @@ const Navbar = () => {
 						type='text'
 						name='search'
 						id='search'
+						disabled
 					/>
 					<span>
 						<CiSearch />
@@ -114,10 +117,12 @@ const Navbar = () => {
 				</form>
 
 				<div className='profile_cart'>
-					<button className='shopping_cart'>
-						<CiHeart />
-						<span>{favouriteItems}</span>
-					</button>
+					<Link to={"/favourites"}>
+						<button className='shopping_cart'>
+							<CiHeart />
+							<span>{favouriteItems}</span>
+						</button>
+					</Link>
 
 					<Link to={"/cart"}>
 						<button className='shopping_cart'>

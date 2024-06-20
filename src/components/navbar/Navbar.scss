@@ -98,10 +98,13 @@ nav {
 		gap: 0.3rem;
 		align-items: center;
 		justify-content: center;
-		color: #e84b63;
 
-		svg {
-			font-size: 2.5rem;
+		a {
+			color: #e84b63;
+
+			svg {
+				font-size: 2.5rem;
+			}
 		}
 	}
 
@@ -172,11 +175,13 @@ nav {
 		.desktop_search {
 			display: flex;
 			// border: 2px solid #e84b63;
+			opacity: 0;
 			border-radius: 0.3rem;
 			overflow: hidden;
 			background-color: #fef2f3;
 			width: 400px;
 			flex-direction: row-reverse;
+			pointer-events: none;
 
 			&:focus {
 				svg {
