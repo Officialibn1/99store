@@ -3,7 +3,7 @@ import "./EmptyCart.scss";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { Link } from "react-router-dom";
 
-const EmptyCart = () => {
+const EmptyCart = ({ title }: { title?: string }) => {
 	return (
 		<div className='empty_cart_container'>
 			<div>
@@ -14,7 +14,7 @@ const EmptyCart = () => {
 				/>
 			</div>
 
-			<h1>Sorry, you have no item in your cart!!</h1>
+			<h1>{title ? title : "Sorry, you have no item in your cart!!"}</h1>
 
 			<h2>
 				<Link to={"/"}>Continue</Link> shopping to add items
