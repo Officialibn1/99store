@@ -22,7 +22,10 @@ const Favourites = () => {
 				{products.length > 0 ? (
 					<div className='grid_container favourite_products'>
 						{products.map((product) => (
-							<FavouriteCard product={product} />
+							<FavouriteCard
+								key={`Favourite Item ${product.name}`}
+								product={product}
+							/>
 						))}
 					</div>
 				) : (
