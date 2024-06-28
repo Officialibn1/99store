@@ -75,9 +75,7 @@ const CategoriesSection = () => {
 						className='top_categries_item'>
 						<div>
 							<img
-								src={`${import.meta.env.VITE_STRAPI_SERVER_IMAGE_URL}${
-									category.attributes.banner.data.attributes.url
-								}`}
+								src={category.attributes.banner.data.attributes.url}
 								alt={`${
 									category.attributes.name +
 									" " +

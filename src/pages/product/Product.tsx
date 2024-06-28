@@ -87,10 +87,10 @@ const Product = () => {
 						<div className='product_images_container'>
 							<div className='product_image_large'>
 								<img
-									src={`${import.meta.env.VITE_STRAPI_SERVER_IMAGE_URL}${
+									src={
 										productData?.attributes.images.data[currentImageIndex]
 											.attributes.url
-									}`}
+									}
 									alt={`${productData?.attributes.images.data[currentImageIndex].attributes.hash}`}
 								/>
 							</div>
@@ -103,9 +103,7 @@ const Product = () => {
 										onClick={() => setCurrentImageIndex(i)}
 										key={image.attributes.hash}>
 										<img
-											src={`${import.meta.env.VITE_STRAPI_SERVER_IMAGE_URL}${
-												image.attributes.url
-											}`}
+											src={image.attributes.url}
 											alt={`${image.attributes.hash}`}
 										/>
 									</div>

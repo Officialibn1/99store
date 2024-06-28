@@ -10,6 +10,8 @@ const Hero = () => {
 	const [fetchDataLoading, setFetchDataLoading] = useState(false);
 	const [fetchDataError, setFetchDataError] = useState();
 
+	console.log(heroData);
+
 	useEffect(() => {
 		setFetchDataLoading(true);
 		const fetchHeroData = async () => {
@@ -63,11 +65,7 @@ const Hero = () => {
 					</div>
 				</div>
 				{heroData && (
-					<img
-						src={`${import.meta.env.VITE_STRAPI_SERVER_IMAGE_URL}${
-							heroData?.attributes.image.data?.attributes.url
-						}`}
-					/>
+					<img src={heroData?.attributes.image.data?.attributes.url} />
 				)}
 			</div>
 		</div>

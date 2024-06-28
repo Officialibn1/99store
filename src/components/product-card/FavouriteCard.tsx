@@ -24,9 +24,7 @@ const FavouriteCard = ({ product }: { product: FavouriteItem }) => {
 				className='image_container'
 				to={`/products/${product.slug}`}>
 				<img
-					src={`${import.meta.env.VITE_STRAPI_SERVER_IMAGE_URL}${
-						product.imageUrl
-					}`}
+					src={product.imageUrl}
 					alt={product.slug}
 				/>
 			</Link>

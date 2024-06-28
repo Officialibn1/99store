@@ -25,9 +25,7 @@ const ProductCard = ({ attributes, id }: Product) => {
 				className='image_container'
 				to={`/products/${attributes.slug}`}>
 				<img
-					src={`${import.meta.env.VITE_STRAPI_SERVER_IMAGE_URL}${
-						attributes.images.data[0].attributes.url
-					}`}
+					src={attributes.images.data[0].attributes.url}
 					alt={attributes.images.data[0].attributes.hash}
 				/>
 			</Link>

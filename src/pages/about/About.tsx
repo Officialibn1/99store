@@ -59,9 +59,7 @@ const About = () => {
 			<div className='about_us_container'>
 				<div className='about_us_hero'>
 					<img
-						src={`${import.meta.env.VITE_STRAPI_SERVER_IMAGE_URL}${
-							aboutUsData[0]?.attributes.image.data.attributes.url
-						}`}
+						src={aboutUsData[0]?.attributes.image.data.attributes.url}
 						alt={`${aboutUsData[0]?.attributes.image.data.attributes.hash}`}
 					/>
 

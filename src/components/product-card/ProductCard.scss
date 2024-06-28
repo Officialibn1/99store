@@ -1,3 +1,4 @@
+// box-shadow: -6px -6px 5px 0px #ffffff66, 6px 6px 4px 0px #4d4d4d33;
 .product_card {
 	width: 100%;
 	display: flex;
@@ -5,8 +6,14 @@
 	background-color: #ffffff;
 	border-radius: 0.5rem;
 	border: 1px solid #fbd0d4;
+	transition: all 200ms ease-in-out;
+
 	overflow: hidden;
 	height: fit-content;
+
+	// &:hover {
+	// 	box-shadow: -6px -6px 5px 0px #ffffff66, 6px 6px 4px 0px #4d4d4d33;
+	// }
 
 	.image_container {
 		width: 100%;
