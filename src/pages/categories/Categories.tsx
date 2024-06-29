@@ -5,6 +5,8 @@ import "./Categories.scss";
 import axios from "axios";
 import { ApiResponse, Categories as CategoriesType } from "./typings";
 import { Link } from "react-router-dom";
+import LoadingCategory from "../../components/ui/loading-category/LoadingCategory";
+import ErrorPage from "../../components/ui/error-page/ErrorPage";
 
 const Categories = () => {
 	const [categorydata, setCategorydata] = useState<CategoriesType[]>();
@@ -33,6 +35,8 @@ const Categories = () => {
 
 					setCategorydata(data.data);
 
+					setApiError(null);
+
 					setIsLoading(false);
 
 					return;
@@ -53,13 +57,15 @@ const Categories = () => {
 
 	return (
 		<div className='section_container'>
-			{isLoading && <h1>Fetching data. . . </h1>}
+			<div className='categories_page_container'>
+				{isLoading && [1, 2, 3].map((_, i) => <LoadingCategory key={i} />)}
 
-			{!isLoading && apiError && <h1>Error fetching data. . . </h1>}
+				{!isLoading && apiError && <ErrorPage />}
 
-			{!isLoading && !apiError && categorydata && (
-				<div className='categories_page_container'>
-					{categorydata?.map((category) => (
+				{!isLoading &&
+					!apiError &&
+					categorydata &&
+					categorydata?.map((category) => (
 						<Link
 							to={`${category.attributes.url}`}
 							key={category.id}
@@ -82,8 +88,7 @@ const Categories = () => {
 							</div>
 						</Link>
 					))}
-				</div>
-			)}
+			</div>
 		</div>
 	);
 };
