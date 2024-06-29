@@ -18,6 +18,8 @@ import {
 import EmptyPage from "../../components/ui/empty-page/EmptyPage";
 import ErrorPage from "../../components/ui/error-page/ErrorPage";
 import LoadingCard from "../../components/ui/loading-card/LoadingCard";
+import { CiFilter } from "react-icons/ci";
+import { IoMdClose } from "react-icons/io";
 
 const Products = () => {
 	const [products, setProducts] = useState<Product[]>();
@@ -31,6 +33,8 @@ const Products = () => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const [apiError, setApiError] = useState();
+
+	const [showMobileFiler, setShowMobileFiler] = useState(false);
 
 	const [fetchSubCategoriesError, setFetchSubCategoriesError] = useState();
 
@@ -187,11 +191,38 @@ const Products = () => {
 		// prettier-ignore
 		setSubCategoriesFilterParam(array)
 	};
+
+	// const handleSortByDate = (filter: string) => {
+	// 	setSortByDateFilterParam(sortByDateFilterParam !== filter && filter);
+	// };
+
+	// console.log(sortByDateFilterParam === "asc");
 	return (
-		<div className='category_page_wrapper'>
+		<div className='category_page_wrapper section_container'>
 			{
 				<div className='category_page_container'>
-					<div className='category_page_filter'>
+					<div className='mobile_sort_button'>
+						<button onClick={() => setShowMobileFiler(!showMobileFiler)}>
+							<span>Filters</span>
+							<CiFilter />
+						</button>
+					</div>
+
+					<div
+						className='mobile_sort_filters_container'
+						style={{
+							left: showMobileFiler ? "0px" : "-100vw",
+							display: showMobileFiler ? "flex" : "none",
+						}}>
+						<div
+							className='mobile_sort_button'
+							style={{ marginLeft: "auto" }}>
+							<button onClick={() => setShowMobileFiler(!showMobileFiler)}>
+								<span>Close</span>
+								<IoMdClose />
+							</button>
+						</div>
+
 						<div className='category_filter_group'>
 							<h1>Categories</h1>
 
@@ -199,7 +230,7 @@ const Products = () => {
 								categoriesFilter.map((filter) => (
 									<label
 										htmlFor={filter.attributes.name}
-										key={filter.attributes.name}>
+										key={`mobile_${filter.attributes.name}`}>
 										<input
 											type='checkbox'
 											name={filter.attributes.name}
@@ -243,6 +274,201 @@ const Products = () => {
 											id={filter.attributes.name}
 											value={filter.attributes.url}
 											onChange={handleSubcategoriesSelect}
+										/>
+
+										<span className='check'>
+											<BiCheck />
+										</span>
+
+										<span>{filter.attributes.name}</span>
+									</label>
+								))
+							) : (
+								<span>Fetching Sub Categories</span>
+							)}
+
+							{subCategoriesFilter && fetchSubCategoriesError ? (
+								<span>Error fetching sub categories</span>
+							) : (
+								subCategoriesFilter &&
+								subCategoriesFilter.length === 0 && (
+									<span>There are no filters</span>
+								)
+							)}
+						</div>
+
+						<div className='category_filter_group'>
+							<h1>Sort By(Price):</h1>
+
+							<label>
+								<input
+									type='radio'
+									name='price'
+									id='price'
+									key='price'
+									value=''
+									onChange={(e) => setSortByPriceFilterParam(e.target.value)}
+									// checked={sortByPriceFilterParam === ""}
+								/>
+
+								<span className='radio'>
+									<BiCheck />
+								</span>
+
+								<span>None</span>
+							</label>
+
+							<label>
+								<input
+									type='radio'
+									name='price'
+									id='price'
+									key='price'
+									value='asc'
+									onChange={(e) => setSortByPriceFilterParam(e.target.value)}
+									// checked={sortByPriceFilterParam === "asc"}
+								/>
+
+								<span className='radio'>
+									<BiCheck />
+								</span>
+
+								<span>Price (Asc)</span>
+							</label>
+
+							<label>
+								<input
+									type='radio'
+									name='price'
+									id='price'
+									key='price'
+									value='desc'
+									onChange={(e) => setSortByPriceFilterParam(e.target.value)}
+									// checked={sortByPriceFilterParam === "desc"}
+								/>
+
+								<span className='radio'>
+									<BiCheck />
+								</span>
+
+								<span>Price (Desc)</span>
+							</label>
+						</div>
+
+						<div className='category_filter_group'>
+							<h1>Sort By(Date):</h1>
+
+							<label>
+								<input
+									type='radio'
+									name='Date'
+									id='Date'
+									key='Date'
+									value=''
+									onChange={(e) => setSortByDateFilterParam(e.target.value)}
+								/>
+
+								<span className='radio'>
+									<BiCheck />
+								</span>
+
+								<span>None</span>
+							</label>
+
+							<label>
+								<input
+									type='radio'
+									name='Date'
+									id='Date'
+									key='Date'
+									value='asc'
+									onChange={(e) => setSortByDateFilterParam(e.target.value)}
+								/>
+
+								<span className='radio'>
+									<BiCheck />
+								</span>
+
+								<span>Date (Asc)</span>
+							</label>
+
+							<label>
+								<input
+									type='radio'
+									name='Date'
+									id='Date'
+									key='Date'
+									value='desc'
+									onChange={(e) => setSortByDateFilterParam(e.target.value)}
+								/>
+
+								<span className='radio'>
+									<BiCheck />
+								</span>
+
+								<span>Date (Desc)</span>
+							</label>
+						</div>
+					</div>
+
+					<div className='category_page_filter'>
+						<div className='category_filter_group'>
+							<h1>Categories</h1>
+
+							{categoriesFilter && categoriesFilter?.length > 0 ? (
+								categoriesFilter.map((filter) => (
+									<label
+										htmlFor={filter.attributes.name}
+										key={filter.attributes.name}>
+										<input
+											type='checkbox'
+											name={filter.attributes.name}
+											id={filter.attributes.name}
+											value={filter.attributes.url}
+											onChange={handlecategoriesSelect}
+											checked={categoriesFilterParam.includes(
+												filter.attributes.url,
+											)}
+										/>
+
+										<span className='check'>
+											<BiCheck />
+										</span>
+
+										<span>{filter.attributes.name}</span>
+									</label>
+								))
+							) : (
+								<span>Fetching Categories</span>
+							)}
+
+							{categoriesFilter && fetchCategoriesError ? (
+								<span>Error fetching categories</span>
+							) : (
+								categoriesFilter &&
+								categoriesFilter.length === 0 && (
+									<span>There are no filters</span>
+								)
+							)}
+						</div>
+
+						<div className='category_filter_group'>
+							<h1>Sub-Categories</h1>
+
+							{subCategoriesFilter && subCategoriesFilter?.length > 0 ? (
+								subCategoriesFilter.map((filter) => (
+									<label
+										htmlFor={filter.attributes.name}
+										key={filter.attributes.name}>
+										<input
+											type='checkbox'
+											name={filter.attributes.name}
+											id={filter.attributes.name}
+											value={filter.attributes.url}
+											onChange={handleSubcategoriesSelect}
+											checked={subCategoriesFilterParam.includes(
+												filter.attributes.url,
+											)}
 										/>
 
 										<span className='check'>
@@ -376,6 +602,7 @@ const Products = () => {
 							</label>
 						</div>
 					</div>
+
 					<div className='grid_container category_page_products'>
 						{isLoading ? (
 							[1, 2, 3, 4, 5, 6].map((_, i) => <LoadingCard key={i} />)
