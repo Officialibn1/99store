@@ -4,6 +4,14 @@
 	grid-template-columns: repeat(1, 1fr);
 	gap: 2rem;
 
+	.loading_categories_ui {
+		opacity: 0.45;
+		animation: skeleton-loading 1s linear infinite alternate;
+		width: 100%;
+		aspect-ratio: 1/0.5;
+		border-radius: 0.5rem;
+	}
+
 	.top_categries_item {
 		width: 100%;
 		overflow: hidden;
@@ -73,5 +81,15 @@
 				}
 			}
 		}
+	}
+}
+
+@keyframes skeleton-loading {
+	0% {
+		background-color: hsl(200, 20%, 70%);
+	}
+
+	100% {
+		background-color: hsl(200, 20%, 95%);
 	}
 }

@@ -61,32 +61,38 @@ const CategoriesSection = () => {
 				link='categories'
 			/>
 
-			{isLoading && <h1>Fetching Categroies from api</h1>}
-
 			{!isLoading && apiError && (
 				<h1>Error fetching Categroies from api, please refresh page. . .</h1>
 			)}
 
 			<div className='top_categories_grid'>
-				{categorydata?.map((category) => (
-					<Link
-						to={`/categories/${category.attributes.url}`}
-						key={category.id}
-						className='top_categries_item'>
-						<div>
-							<img
-								src={category.attributes.banner.data.attributes.url}
-								alt={`${
-									category.attributes.name +
-									" " +
-									category.attributes.description
-								}`}
-							/>
+				{isLoading &&
+					[1, 2, 3].map((_, i) => (
+						<div
+							className='loading_categories_ui'
+							key={i}></div>
+					))}
 
-							<span>{category.attributes.name}</span>
-						</div>
-					</Link>
-				))}
+				{!isLoading &&
+					categorydata?.map((category) => (
+						<Link
+							to={`/categories/${category.attributes.url}`}
+							key={category.id}
+							className='top_categries_item'>
+							<div>
+								<img
+									src={category.attributes.banner.data.attributes.url}
+									alt={`${
+										category.attributes.name +
+										" " +
+										category.attributes.description
+									}`}
+								/>
+
+								<span>{category.attributes.name}</span>
+							</div>
+						</Link>
+					))}
 			</div>
 		</div>
 	);

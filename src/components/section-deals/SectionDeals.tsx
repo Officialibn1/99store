@@ -5,6 +5,7 @@ import "../utility-styles/grid-container.scss";
 import axios from "axios";
 import { Product, ProductResponse } from "./typings";
 import ProductCard from "../product-card/ProductCard";
+import LoadingCard from "../ui/loading-card/LoadingCard";
 
 type Props = {
 	icon: ReactNode;
@@ -63,7 +64,7 @@ const SectionDeals = (props: Props) => {
 			/>
 
 			<div className='grid_container'>
-				{isLoading && <h1>Fetching Data. . .</h1>}
+				{isLoading && [1, 2, 3].map((_, i) => <LoadingCard key={i} />)}
 
 				{error && !isLoading && (
 					<h1>Something went wrong, please refresh the page. . .</h1>
