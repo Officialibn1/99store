@@ -14,6 +14,8 @@ import { HiOutlineShoppingCart } from "react-icons/hi2";
 
 import { CartItem, addToCart } from "../../redux/cart-reducer";
 import { useAppDispatch } from "../../redux/redux-hooks";
+import LoadingProductPage from "../../components/ui/loading-product-page/LoadingProductPage";
+import ErrorPage from "../../components/ui/error-page/ErrorPage";
 
 const Product = () => {
 	const [productData, setProductData] = useState<Product>();
@@ -74,13 +76,9 @@ const Product = () => {
 	return (
 		<div className='section_container'>
 			<div className='product_page_container'>
-				{isLoading && <h1>Fetching Product Information. . .</h1>}
+				{isLoading && <LoadingProductPage />}
 
-				{!isLoading && error && (
-					<h1>
-						Error while Fetching Product Information, please refresh page. . .
-					</h1>
-				)}
+				{!isLoading && error && <ErrorPage />}
 
 				{!isLoading && !error && productData && (
 					<div className='product_image_information'>
