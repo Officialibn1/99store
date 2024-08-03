@@ -1,21 +1,22 @@
 .section_header {
-	// border: 1px solid #000;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
 	div {
+		// border: 1px solid #000;
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
 
 		span {
-			font-size: 3rem;
+			font-size: 2rem;
 			color: #d42a4c;
 		}
 
 		h1 {
-			font-size: 1.5rem;
+			font-size: 1.2rem;
+			font-weight: 500;
 		}
 	}
 

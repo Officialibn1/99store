@@ -112,17 +112,9 @@ const Products = () => {
 
 	useEffect(() => {
 		setIsLoading(true);
-		// ${
-		// 	sortByPriceFilterParam && `&sort[0]=price:${sortByPriceFilterParam}`
-		// }${
-		// 	sortByDateFilterParam &&
-		// 	`&sort[0]=createdAt:${sortByDateFilterParam}`
-		// }
 
 		const fetchProducts = async () => {
 			try {
-				// await new Promise((resolve) => setTimeout(resolve, 3000));
-
 				/* prettier-ignore */
 				const res = await axios.get(
 					`${
@@ -136,13 +128,6 @@ const Products = () => {
 						},
 					},
 				);
-
-				// throw new Error("Oopss");
-
-				/* prettier-ignore */
-				// console.log(
-				// 	`${categoriesFilterParam
-				// 		?.map((filter, index) => `&filters[categories][url][${index}]=${filter}`).join("")}`);
 
 				if (res.status === 200) {
 					const data: ProductResponse = await res.data;
@@ -192,11 +177,6 @@ const Products = () => {
 		setSubCategoriesFilterParam(array)
 	};
 
-	// const handleSortByDate = (filter: string) => {
-	// 	setSortByDateFilterParam(sortByDateFilterParam !== filter && filter);
-	// };
-
-	// console.log(sortByDateFilterParam === "asc");
 	return (
 		<div className='category_page_wrapper section_container'>
 			{

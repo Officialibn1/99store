@@ -9,17 +9,17 @@ type Props = {
 	link?: string;
 };
 
-const SectionHeader = (props: Props) => {
+const SectionHeader = ({ title, icon, link }: Props) => {
 	return (
-		<div className=' section_header'>
+		<div className='section_header'>
 			<div>
-				<span>{props.icon}</span>
+				<span>{icon}</span>
 
-				<h1>{props.title}</h1>
+				<h1>{title}</h1>
 			</div>
 
-			{props.link && (
-				<Link to={props.link}>
+			{link && (
+				<Link to={link}>
 					<span>View All</span>
 
 					<BsCaretRight />

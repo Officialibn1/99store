@@ -1,4 +1,3 @@
-import React from "react";
 import { Product } from "../section-deals/typings";
 import { Link } from "react-router-dom";
 import "./ProductCard.scss";

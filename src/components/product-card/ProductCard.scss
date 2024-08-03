@@ -4,7 +4,7 @@
 	display: flex;
 	flex-direction: column;
 	background-color: #ffffff;
-	border-radius: 0.5rem;
+	border-radius: 0.3rem;
 	border: 1px solid #fbd0d4;
 	transition: all 200ms ease-in-out;
 
@@ -51,7 +51,8 @@
 			align-items: center;
 
 			p {
-				font-size: 1rem;
+				font-size: 0.8rem;
+				font-weight: 500;
 
 				&:first-child {
 					text-decoration: line-through;
@@ -78,19 +79,20 @@
 				z-index: 5;
 
 				&:last-child {
-					padding: 0.5rem 1rem;
+					padding: 0.4rem 0.8rem;
 					background-color: #d42a4c;
+
 					color: #fef2f3;
-					border-radius: 0.3rem;
+					border-radius: 0.2rem;
 				}
 
 				span {
-					font-size: 1rem;
-					font-weight: 500;
+					font-size: 0.8rem;
+					font-weight: 600;
 				}
 
 				svg {
-					font-size: 1.5rem;
+					font-size: 1.2rem;
 				}
 			}
 		}

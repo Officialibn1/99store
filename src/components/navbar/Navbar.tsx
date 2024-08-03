@@ -10,7 +10,7 @@ import {
 import { RiMenu4Line } from "react-icons/ri";
 import { CiSearch, CiHeart } from "react-icons/ci";
 import { GiConverseShoe, GiShoppingCart } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoIosFemale, IoIosMale, IoMdClose } from "react-icons/io";
 import { CgMenuGridO } from "react-icons/cg";
 import { PiPantsThin, PiTShirtThin } from "react-icons/pi";
@@ -18,6 +18,12 @@ import { MdOutlineChildCare } from "react-icons/md";
 import { useAppSelector } from "../../redux/redux-hooks";
 
 const Navbar = () => {
+	const { pathname } = useLocation();
+
+	const pathArray = pathname.split("/");
+
+	const path = `/${pathArray[1]}`;
+
 	const [showNav, setShowNav] = useState(false);
 
 	const [showCategories, setShowCategories] = useState(false);
@@ -191,16 +197,32 @@ const Navbar = () => {
 				<div className='nav_links_desktop'>
 					<ul>
 						<li>
-							<Link to={"/"}>Home</Link>
+							<Link
+								className={path !== "/" ? "idle" : "active"}
+								to={"/"}>
+								Home
+							</Link>
 						</li>
 						<li>
-							<Link to={"/categories"}>Categories</Link>
+							<Link
+								className={path !== "/categories" ? "idle" : "active"}
+								to={"/categories"}>
+								Categories
+							</Link>
 						</li>
 						<li>
-							<Link to={"/products"}>Products</Link>
+							<Link
+								className={path !== "/products" ? "idle" : "active"}
+								to={"/products"}>
+								Products
+							</Link>
 						</li>
 						<li>
-							<Link to={"/about"}>About Us</Link>
+							<Link
+								className={path !== "/about" ? "idle" : "active"}
+								to={"/about"}>
+								About Us
+							</Link>
 						</li>
 					</ul>
 				</div>
